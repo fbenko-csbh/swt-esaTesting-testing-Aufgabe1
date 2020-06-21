@@ -16,6 +16,18 @@ public class AbonnementTest {
         abo = new Abonnement("Peter", "Lustig", Abonnement.JAHRESABO , 100);
         System.out.println("test läuft...");
     }
+    
+    @org.junit.Test
+    public void ausGuthabenZahlen_neukunde() throws Exception {
+        double guthaben = abo.ausGuthabenZahlen(30, false);
+        assertEquals(70, guthaben, 0);
+    }
+
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void ausGuthabenZahlen_abonnent() throws Exception {
+        abo.ausGuthabenZahlen(30, true);
+        fail("Hier sollte eine IllegalArgumentException geworfen werden");
+    }
 
     @org.junit.Test
     public void guthabenAufladen_neukunde() throws Exception {
@@ -44,11 +56,6 @@ public class AbonnementTest {
     @org.junit.Test
     public void hatJahresabo() {
         assertTrue("Es handelt sich nicht um ein Jahresabonement", abo.hatJahresabo());
-    }
-
-    @org.junit.Test
-    public void absolutNeueMethode() throws Exception {
-        fail("Dieser Test muss noch geschrieben werden");
     }
 
 }

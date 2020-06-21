@@ -29,6 +29,17 @@ public class Abonnement {
         return guthaben;
     }
 
+    public double ausGuthabenZahlen(double betrag, boolean neukunde) {
+        if(guthaben < 0) {
+            throw new IllegalArgumentException();
+        }
+        if(neukunde) {
+            throw new IllegalArgumentException();
+        }
+        guthaben -= betrag;
+        return guthaben;
+    }
+
     public double zeigeGuthaben() {
         return guthaben;
     }
